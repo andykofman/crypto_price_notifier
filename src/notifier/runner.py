@@ -1,0 +1,1 @@
+ # CLI entry: python -m notifier monitor …

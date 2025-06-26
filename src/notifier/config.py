@@ -1,20 +1,22 @@
-# env vars, defaults
+from pydantic import BaseModel
+from typing import List
 
-import os
-from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
+class CoinConfig(BaseModel):
+    id: str          # CoinGecko ID, e.g. "bitcoin"
+    name: str        # Coin name, e.g. "Bitcoin"
+    threshold: float # Price threshold, e.g. 10000
+    notify_step: float = 0.05 # Notify step, e.g. 0.05
 
-class Config:
-    """Application configuration."""
-    
-    # Database
-    DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///./crypto_notifier.db')
-    
-    # Application
-    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
-    SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
-    
-    # Alembic
-    ALEMBIC_CONFIG = 'alembic.ini' 
+def get_coin_config() -> List[CoinConfig]:
+    return [ 
+        CoinConfig(id="bitcoin", name="Bitcoin", threshold=10000, notify_step=0.05),
+        CoinConfig(id="ethereum", name="Ethereum", threshold=1000, notify_step=0.05),
+        CoinConfig(id="solana", name="Solana", threshold=100, notify_step=0.05),
+        CoinConfig(id="dogecoin", name="Dogecoin", threshold=0.1, notify_step=0.05),
+        CoinConfig(id="shiba-inu", name="Shiba Inu", threshold=0.001, notify_step=0.05),
+        CoinConfig(id="tether", name="Tether", threshold=1, notify_step=0.05),
+        CoinConfig(id="ripple", name="Ripple", threshold=0.1, notify_step=0.05),
+        CoinConfig(id="litecoin", name="Litecoin", threshold=100, notify_step=0.05),
+        CoinConfig(id="cardano", name="Cardano", threshold=0.1, notify_step=0.05),
+    ]
