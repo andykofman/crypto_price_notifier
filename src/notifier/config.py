@@ -10,13 +10,9 @@ class CoinConfig(BaseModel):
 
 def get_coin_config() -> List[CoinConfig]:
     return [ 
-        CoinConfig(id="bitcoin", name="Bitcoin", threshold=10000, notify_step=0.05),
+        CoinConfig(id="bitcoin", name="Bitcoin", threshold=107600, notify_step=0.05),
         CoinConfig(id="ethereum", name="Ethereum", threshold=1000, notify_step=0.05),
         CoinConfig(id="solana", name="Solana", threshold=100, notify_step=0.05),
         CoinConfig(id="dogecoin", name="Dogecoin", threshold=0.1, notify_step=0.05),
-        CoinConfig(id="shiba-inu", name="Shiba Inu", threshold=0.001, notify_step=0.05),
-        CoinConfig(id="tether", name="Tether", threshold=1, notify_step=0.05),
-        CoinConfig(id="ripple", name="Ripple", threshold=0.1, notify_step=0.05),
-        CoinConfig(id="litecoin", name="Litecoin", threshold=100, notify_step=0.05),
-        CoinConfig(id="cardano", name="Cardano", threshold=0.1, notify_step=0.05),
+
     ]
