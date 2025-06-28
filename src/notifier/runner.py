@@ -13,10 +13,10 @@ def play_sound(sound_type: str):
             import winsound
             if sound_type == "threshold":
                 # Higher pitched sound for threshold crossing (more urgent)
-                winsound.MessageBeep(winsound.MB_ICONHAND)  # Critical sound
+                winsound.Beep(1000, 500)  # Higher frequency, longer duration
             else:
                 # Lower pitched sound for price movements
-                winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)  # Warning sound
+                winsound.Beep(800, 300)  # Lower frequency, shorter duration
         else:
             import os
             if sound_type == "threshold":
@@ -65,7 +65,6 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from notifier.config import get_coin_config
 from notifier.fetcher import CoinGeckoFetcher
 from notifier.alert_logic import AlertLogic
-from notifier.runner import notify
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
